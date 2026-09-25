@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Altura Airlines CX</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07131F;--sf:#0E2032;--sf2:#132A40;--ln:#21405D;--ink:#EAF2F8;--ink2:#A6BACB;--ink3:#6E879E;--ac:#FFB23E;--good:#2FD59B;--bad:#FF6B6B;--mid:#8095A9;
+--fd:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;--fb:"Barlow",system-ui,Arial,sans-serif;--fm:"IBM Plex Mono",ui-monospace,monospace}
+*{box-sizing:border-box}html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:var(--fb)}
+.slide{position:absolute;inset:0;padding:5vh 6vw 9vh;display:flex;flex-direction:column;gap:2.2vh;opacity:0;visibility:hidden;transform:translateX(40px);transition:.6s cubic-bezier(.2,.7,.1,1);overflow:auto;
+background:radial-gradient(900px 500px at 85% -10%,rgba(255,178,62,.10),transparent 70%),radial-gradient(rgba(166,186,203,.08) 1.2px,transparent 1.3px) 0 0/28px 28px,var(--bg)}
+.slide.on{opacity:1;visibility:visible;transform:none}
+.on .rv{animation:up .8s cubic-bezier(.2,.7,.1,1) both;animation-delay:calc(var(--d,0)*.12s + .15s)}
+@keyframes up{from{opacity:0;transform:translateY(22px)}}
+.eb{font:500 13px var(--fm);letter-spacing:.18em;text-transform:uppercase;color:var(--ac);margin:0}
+h1,h2{font-family:var(--fd);font-weight:800;line-height:.95;margin:0;text-wrap:balance}
+h1{font-size:clamp(44px,7vw,110px);max-width:13ch}h2{font-size:clamp(32px,4.2vw,64px);max-width:26ch}
+.lead{font-size:clamp(17px,1.6vw,24px);color:var(--ink2);max-width:60ch;margin:0}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.g2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:18px;padding:22px}
+.lbl{font:500 12px var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin:0 0 8px}
+.big{font-family:var(--fd);font-weight:800;font-size:clamp(56px,6vw,96px);line-height:.9;color:var(--ac)}
+.muted{color:var(--ink2)}
+.pass{background:var(--sf);border:1px solid var(--ln);border-radius:22px;padding:26px;display:grid;gap:14px;max-width:520px}
+.route{display:flex;align-items:center;gap:18px;font-family:var(--fd);font-size:64px;font-weight:800}.route small{display:block;font:500 12px var(--fm);color:var(--ink3);letter-spacing:.14em}
+.seats{display:grid;grid-template-columns:repeat(25,1fr);gap:5px;background:var(--sf);border:1px solid var(--ln);border-radius:60px 24px 24px 60px;padding:18px 26px 18px 60px}
+.seat{aspect-ratio:1;border-radius:5px;background:var(--sf2);transition:background .4s}
+.p{background:var(--good)!important}.n{background:var(--mid)!important}.d{background:var(--bad)!important}
+.bar{height:26px;background:var(--sf2);border-radius:8px;overflow:hidden;display:flex}.bar i{display:block;height:100%;transition:width 1s}
+.row{display:grid;grid-template-columns:220px 1fr 70px;gap:14px;align-items:center;margin:8px 0;font-size:16px}
+input[type=range]{width:100%}
+button{font:600 15px var(--fb);background:var(--sf2);color:var(--ink);border:1px solid var(--ln);border-radius:999px;padding:9px 16px;cursor:pointer}
+button.sel,button:hover{background:var(--ac);color:#1c1300;border-color:var(--ac)}
+.phone{width:360px;min-height:560px;border:10px solid #02080E;border-radius:44px;background:var(--sf);padding:22px;display:flex;flex-direction:column;gap:14px;margin:auto}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+svg text{fill:var(--ink2);font:500 13px var(--fm)}
+table{border-collapse:separate;border-spacing:5px;font-size:13.5px;width:100%}td,th{background:var(--sf);border-radius:8px;padding:8px;vertical-align:top;text-align:left}th{font:500 11px var(--fm);text-transform:uppercase;color:var(--ac)}
+.nav{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:8px;align-items:center;z-index:9;background:rgba(14,32,50,.85);padding:6px;border-radius:999px;border:1px solid var(--ln);font:500 12px var(--fm)}
+.foot{position:absolute;bottom:3vh;left:6vw;right:6vw;display:flex;justify-content:space-between;font:500 11px var(--fm);letter-spacing:.14em;color:var(--ink3);text-transform:uppercase}
+@media (max-width:900px){.g3,.g2{grid-template-columns:1fr}.row{grid-template-columns:1fr}.seats{grid-template-columns:repeat(10,1fr)}}
+@media print{@page{size:1600px 900px;margin:0}body{height:auto}.slide{position:relative;opacity:1;visibility:visible;transform:none;width:1600px;height:900px;break-after:page;-webkit-print-color-adjust:exact;print-color-adjust:exact}.nav{display:none}*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<section class="slide on">
+ <p class="eb rv">Diplomado en Gerencia Comercial con Automatización en IA</p>
+ <div class="g2" style="align-items:center;flex:1">
+  <div style="display:grid;gap:22px">
+   <h1 class="rv" style="--d:1">La experiencia del viajero, medida de punta a punta</h1>
+   <p class="lead rv" style="--d:2">Encuesta de satisfacción, Journey Map y tablero de <b>CSAT</b>, <b>NPS</b> y <b>CES</b> para Altura Airlines.</p>
+   <p class="muted rv" style="--d:3">Presenta: <span contenteditable="true" style="border-bottom:1px dashed var(--ac)">[Tu nombre]</span></p>
+  </div>
+  <div class="pass rv" style="--d:2">
+   <p class="lbl">Tarjeta de embarque · Programa Voz del Viajero</p>
+   <div class="route"><div>PRC<small>PERCEPCIÓN</small></div><span style="color:var(--ac)">→</span><div>LLT<small>LEALTAD</small></div></div>
+   <div class="g3"><div><p class="lbl">Pasajero</p>Junta Directiva</div><div><p class="lbl">Puerta</p>CX</div><div><p class="lbl">Embarque</p>Ahora</div></div>
+  </div>
+ </div>
+ <p class="muted" style="font-size:12px">Altura Airlines es una aerolínea ficticia con fines académicos. Cifras simuladas (n = 1.200 respuestas).</p>
+</section>
+
+<section class="slide">
+ <p class="eb rv">01 · Tres KPIs, tres preguntas</p>
+ <h2 class="rv" style="--d:1">Sabemos si el avión llega a tiempo. Ahora mediremos cómo llega el pasajero.</h2>
+ <div class="g3">
+  <div class="card rv" style="--d:2"><p class="lbl">Índice de satisfacción · CSAT</p><div class="big">1–5</div><p><b>¿Quedó satisfecho con cada momento?</b></p><p class="muted">Se pregunta por atributos (compra, check-in, puntualidad, tripulación, equipaje, precio). CSAT = % de respuestas 4 y 5. Mide la felicidad de corto plazo.</p></div>
+  <div class="card rv" style="--d:3"><p class="lbl">Net Promoter Score · NPS</p><div class="big">0–10</div><p><b>¿Nos recomendaría?</b></p><p class="muted">NPS = % promotores (9–10) − % detractores (0–6). Los neutros (7–8) no cuentan. Rango −100 a +100. Mide lealtad.</p></div>
+  <div class="card rv" style="--d:4"><p class="lbl">Customer Effort Score · CES</p><div class="big">1–5</div><p><b>“Altura Airlines me facilitó la vida para resolver mi asunto.”</b></p><p class="muted">Promedio de acuerdo y % que respondió 4–5. Clave en cambios, reembolsos y equipaje perdido: el cliente no quiere disculpas, quiere solución.</p></div>
+ </div>
+</section>
+
+<section class="slide">
+ <p class="eb rv">02 · CSAT · Índice de satisfacción</p>
+ <h2 class="rv" style="--d:1">La tripulación sostiene el viaje; el equipaje y el precio lo hunden</h2>
+ <div class="g2">
+  <div class="card rv" style="--d:2" id="csat"></div>
+  <div class="card rv" style="--d:3"><p class="lbl">Índice global (promedio de atributos)</p><div class="big" id="csatG">70%</div><p class="muted">Meta: 80%. Escala: 1 Muy insatisfecho · 2 Insatisfecho · 3 Neutral · 4 Satisfecho · 5 Muy satisfecho.</p><p class="muted"><span style="color:var(--good)">■</span> 4–5 satisfechos &nbsp; <span style="color:var(--mid)">■</span> 3 neutral &nbsp; <span style="color:var(--bad)">■</span> 1–2 insatisfechos</p></div>
+ </div>
+</section>
+
+<section class="slide">
+ <p class="eb rv">03 · NPS · Lealtad</p>
+ <h2 class="rv" style="--d:1">Si nuestros clientes llenaran un avión de 100 sillas…</h2>
+ <div class="seats rv" style="--d:2" id="seats"></div>
+ <div class="g2 rv" style="--d:3">
+  <div class="card"><p class="lbl">Promotores (9–10): <b id="pv">45</b>%</p><input id="pr" type="range" min="0" max="100" value="45"><p class="lbl" style="margin-top:14px">Detractores (0–6): <b id="dv">27</b>%</p><input id="dr" type="range" min="0" max="100" value="27"><p class="muted">Neutros (7–8): <b id="nv">28</b>% — no suman ni restan.</p></div>
+  <div class="card"><p class="lbl">NPS = % promotores − % detractores</p><div class="big" id="nps">+18</div><p class="muted">Meta 12 meses: +35</p><div class="opts"><button onclick="setN(45,27)">Hoy</button><button onclick="setN(52,17)">Meta</button><button onclick="setN(30,45)">Crisis operativa</button></div></div>
+ </div>
+</section>
+
+<section class="slide">
+ <p class="eb rv">04 · CES · Esfuerzo</p>
+ <h2 class="rv" style="--d:1">Comprar es fácil. Resolver un problema, no.</h2>
+ <div class="g2">
+  <div class="card rv" style="--d:2" id="ces"></div>
+  <div class="card rv" style="--d:3"><p class="lbl">CES global</p><div class="big">3,6<span style="font-size:.4em">/5</span></div><p class="muted">63% lo encontró fácil (4–5). Meta: 4,2.</p><p>Pasajeros con esfuerzo alto (CES 1–2): <b style="color:var(--bad)">NPS −41</b>. Con esfuerzo bajo (4–5): <b style="color:var(--good)">NPS +46</b> (simulado).</p></div>
+ </div>
+</section>
+
+<section class="slide">
+ <p class="eb rv">05 · La encuesta · pruébala en vivo</p>
+ <h2 class="rv" style="--d:1">11 preguntas, menos de 3 minutos, enviada automáticamente 2 h después de aterrizar</h2>
+ <div class="g2" style="align-items:start">
+  <div class="card rv" style="--d:2;font-size:15px;line-height:1.5">
+   <p class="lbl">Bloque 1 · Lealtad (NPS)</p>P1. ¿Qué tan probable es que recomiendes Altura Airlines a un familiar, amigo o colega? (0–10)<br>P2. ¿Cuál es la razón principal de tu calificación? (abierta)
+   <p class="lbl" style="margin-top:10px">Bloque 2 · Satisfacción (CSAT 1–5 · N/A)</p>P3. ¿Qué tan satisfecho quedaste con: a) compra y claridad de tarifa, b) check-in, c) entrega de equipaje y abordaje, d) puntualidad, e) comodidad de cabina y asiento, f) atención de la tripulación, g) entrega de equipaje en destino, h) relación precio–valor?
+   <p class="lbl" style="margin-top:10px">Bloque 3 · Esfuerzo (CES 1–5)</p>P4. ¿Cuál fue el principal trámite que hiciste? (compra, check-in, equipaje, cambio/reembolso, reclamo)<br>P5. “Altura Airlines me facilitó la vida para resolver mi asunto.”<br>P6. ¿Por qué canal lo resolviste? · P7. ¿Cuántos contactos necesitaste?
+   <p class="lbl" style="margin-top:10px">Bloques 4–5 · Mejora y perfil</p>P8. Si pudieras cambiar una sola cosa, ¿cuál sería? · P9. Motivo del viaje · P10. Frecuencia de vuelo · P11. ¿Autorizas que te contactemos? (cierre del ciclo)
+   <p class="muted" style="margin-top:10px">Nombre, ruta, cabina y canal de compra se precargan del CRM: no preguntamos lo que ya sabemos. Detractor (0–6) = alerta y llamada en &lt; 48 h.</p>
+  </div>
+  <div class="phone rv" style="--d:3" id="phone"></div>
+ </div>
+</section>
+
+<section class="slide">
+ <p class="eb rv">06 · Journey Map · Valentina, 34, viajera de negocios BOG → MEX</p>
+ <h2 class="rv" style="--d:1">La altitud emocional del viaje: haz clic en cada momento</h2>
+ <div class="card rv" style="--d:2;padding:10px"><svg id="jm" viewBox="0 0 1400 250" width="100%"></svg></div>
+ <div class="g3 rv" style="--d:3" id="jd"></div>
+</section>
+
+<section class="slide">
+ <p class="eb rv">07 · Journey Map completo</p>
+ <div class="rv" style="--d:1;overflow:auto"><table id="jt"></table></div>
+</section>
+
+<section class="slide">
+ <p class="eb rv">08 · Tablero y plan de acción</p>
+ <h2 class="rv" style="--d:1">Tres KPIs bajo meta, cinco iniciativas para alcanzarla</h2>
+ <div class="g3 rv" style="--d:2">
+  <div class="card"><p class="lbl">CSAT</p><div class="big">70% → 81%</div><p class="muted">Meta 80%</p></div>
+  <div class="card"><p class="lbl">NPS</p><div class="big">+18 → +38</div><p class="muted">Meta +35</p></div>
+  <div class="card"><p class="lbl">CES</p><div class="big">3,6 → 4,3</div><p class="muted">Meta 4,2</p></div>
+ </div>
+ <div class="card rv" style="--d:3;font-size:16px;line-height:1.7">
+  <b>1. Maleta visible:</b> rastreo de equipaje en la app y reporte digital de pérdida (NPS +5 · CSAT +5 pp · CES +0,2)<br>
+  <b>2. Un solo caso:</b> CRM único con IA que resume el caso y propone compensación (NPS +6 · CES +0,3)<br>
+  <b>3. Precio claro:</b> tarifa total desde el primer clic y compra en 3 pasos (NPS +2 · CSAT +2 pp)<br>
+  <b>4. Aviso a tiempo:</b> alertas de puerta y retrasos por WhatsApp (NPS +3 · CSAT +2 pp)<br>
+  <b>5. Cerrar el ciclo:</b> llamar a detractores en menos de 48 h (NPS +4)<br>
+  <span class="muted">Impactos estimados: supuestos a validar con un piloto de 90 días en 3 rutas.</span>
+ </div>
+</section>
+
+<section class="slide" style="justify-content:center">
+ <h1 class="rv">Gracias. ¿Preguntas?</h1>
+ <p class="lead rv" style="--d:1">Lo que pedimos a la junta: aprobar el piloto de 90 días, nombrar un dueño de la experiencia del cliente e incluir CSAT, NPS y CES en las metas de cada área.</p>
+</section>
+
+<div class="nav"><button onclick="go(i-1)">←</button><span id="ct"></span><button onclick="go(i+1)">→</button><button onclick="document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen().catch(()=>{})">Pantalla completa</button></div>
+
+<script>
+const S=[...document.querySelectorAll('.slide')];let i=0;
+S.forEach((s,k)=>{const f=document.createElement('div');f.className='foot';f.innerHTML='<span>Altura Airlines · Voz del Viajero</span><span>'+String(k+1).padStart(2,'0')+' / '+S.length+'</span>';s.appendChild(f)});
+function go(n){i=Math.max(0,Math.min(S.length-1,n));S.forEach((s,k)=>s.classList.toggle('on',k===i));document.getElementById('ct').textContent=(i+1)+' / '+S.length}
+addEventListener('keydown',e=>{if(e.target.closest('input,textarea,[contenteditable]'))return;if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(i+1)}if(['ArrowLeft','PageUp'].includes(e.key))go(i-1)});
+go(0);
+
+// CSAT
+const CS=[['Tripulación',[1,3,8,38,50]],['Check-in',[2,4,10,40,44]],['Cabina y asiento',[3,7,17,45,28]],['Compra y tarifa',[5,9,16,38,32]],['Puntualidad',[9,11,16,34,30]],['Equipaje y abordaje',[8,12,19,36,25]],['Precio vs. valor',[7,12,22,37,22]],['Equipaje en destino',[10,13,19,33,25]]];
+document.getElementById('csat').innerHTML='<p class="lbl">% satisfechos (4–5) por atributo</p>'+CS.map(([n,p])=>{const t=p[3]+p[4];return `<div class="row"><span>${n}</span><div class="bar"><i style="width:${p[0]+p[1]}%;background:var(--bad)"></i><i style="width:${p[2]}%;background:var(--mid)"></i><i style="width:${t}%;background:var(--good)"></i></div><b style="color:${t>=80?'var(--good)':t>=65?'var(--ac)':'var(--bad)'}">${t}%</b></div>`}).join('');
+// CES
+const CE=[['Check-in',4.2],['Compra o reserva',3.9],['Equipaje',3.2],['Cambio o reembolso',2.8],['Reclamo',2.5]];
+document.getElementById('ces').innerHTML='<p class="lbl">Promedio 1–5 por trámite · meta 4,2</p>'+CE.map(([n,v])=>`<div class="row"><span>${n}</span><div class="bar"><i style="width:${(v-1)/4*100}%;background:${v>=4?'var(--good)':v>=3?'var(--ac)':'var(--bad)'}"></i></div><b>${v.toFixed(1).replace('.',',')}</b></div>`).join('');
+// NPS seats
+const se=document.getElementById('seats');se.innerHTML='<i class="seat"></i>'.repeat(100);
+function setN(p,d){if(p+d>100)d=100-p;pr.value=p;dr.value=d;pv.textContent=p;dv.textContent=d;nv.textContent=100-p-d;const n=p-d;nps.textContent=(n>0?'+':'')+n;[...se.children].forEach((s,k)=>{s.className='seat '+(k<p?'p':k<p+(100-p-d)?'n':'d')})}
+pr.oninput=()=>setN(+pr.value,+dr.value);dr.oninput=()=>{let d=+dr.value,p=+pr.value;if(p+d>100)p=100-d;setN(p,d)};setN(45,27);
+// Survey
+let st=0,A={};const Q=[
+ {t:'Hola, Valentina. ¿Cómo estuvo tu vuelo ALT 482 BOG → MEX? Te tomará menos de 3 minutos.',o:['Comenzar'],k:'x'},
+ {t:'P1. ¿Qué tan probable es que recomiendes Altura Airlines a un amigo o colega? (0 = nada, 10 = mucho)',o:[0,1,2,3,4,5,6,7,8,9,10],k:'nps'},
+ {t:'P3. ¿Qué tan satisfecho quedaste con la entrega de tu equipaje en destino?',o:['1 😡','2','3','4','5 😃','N/A'],k:'csat'},
+ {t:'P4. ¿Cuál fue el principal trámite que hiciste con nosotros?',o:['Compra','Check-in','Equipaje','Cambio o reembolso','Reclamo'],k:'tr'},
+ {t:'P5. “Altura Airlines me facilitó la vida para resolver mi asunto.” (1 = totalmente en desacuerdo, 5 = totalmente de acuerdo)',o:[1,2,3,4,5],k:'ces'},
+ {t:'P11. ¿Nos autorizas a contactarte para dar seguimiento a tus comentarios?',o:['Sí','No'],k:'ok'}];
+function rs(){const ph=document.getElementById('phone');if(st>=Q.length){const n=+A.nps,c=n>=9?'Promotor':n>=7?'Neutro':'Detractor';ph.innerHTML=`<p class="lbl">ALTURA · Gracias</p><h2 style="font-size:40px">¡Gracias, Valentina!</h2><p>Tu NPS: <b>${n} · ${c}</b></p><p>Tu CES: <b>${A.ces}/5</b></p><p class="muted">${c==='Detractor'?'Se abrió un caso en el CRM: un agente te llamará en menos de 48 h.':'Tu respuesta ya alimenta el tablero en tiempo real.'}</p><button onclick="st=0;A={};rs()">Responder de nuevo</button>`;return}
+ const q=Q[st];ph.innerHTML=`<p class="lbl">ALTURA · Paso ${st} de ${Q.length-1}</p><div class="bar" style="height:6px"><i style="width:${st/(Q.length-1)*100}%;background:var(--ac)"></i></div><p style="font-size:19px;font-weight:600">${q.t}</p><div class="opts">${q.o.map(o=>`<button data-v="${o}">${o}</button>`).join('')}</div>`;
+ ph.querySelectorAll('button').forEach(b=>b.onclick=()=>{A[q.k]=b.dataset.v;st++;rs()})}
+rs();
+// Journey
+const J=[['Inspiración',4,'Compara tarifas y horarios','“¿Qué vuelo me deja a tiempo sin pagar de más?”','Buscadores, redes, web','Precio final poco claro','Tarifa total visible desde el primer clic','Analítica web'],
+['Compra',3,'Elige tarifa, maleta y silla; paga','“¿Por qué el precio subió al final?”','Web, app, call center','Cargos adicionales al final','Compra en 3 pasos','CES 3,9 · CSAT 70%'],
+['Pre-viaje',4,'Check-in online y pase en el celular','“Listo, ya tengo mi pase.”','Email, WhatsApp, app','Cambios de horario avisados tarde','Avisos proactivos por WhatsApp','CSAT check-in 84%'],
+['Aeropuerto',2,'Entrega maleta, seguridad, abordaje','“La fila no avanza… ¿llegaré?”','Counter, pantallas, puerta','Filas largas, cambio de puerta sin aviso','Bag-drop autoservicio y alertas en tiempo real','CSAT 61%'],
+['En vuelo',4,'Trabaja, recibe snack','“La tripulación fue muy amable.”','Tripulación, asiento, menú','Poco espacio, Wi-Fi inestable','Reconocer por nombre al viajero frecuente','CSAT tripulación 88%'],
+['Llegada',1,'Espera la maleta… no llega','“¿Dónde está mi maleta? Nadie informa.”','Banda, mostrador de reclamos','Espera sin información, reporte en papel','Rastreo de maleta en la app','CSAT equipaje 58% · CES 3,2'],
+['Post-viaje',2,'Hace seguimiento al reclamo','“Tercera llamada y explico todo otra vez.”','Call center, WhatsApp, email','Repetir el caso, respuesta en +7 días','CRM único con IA; contacto en < 48 h','CES 2,5 · NPS +18']];
+const X=k=>100+k*200,Y=v=>20+(5-v)*45,fc=v=>v>=4?'var(--good)':v>=3?'var(--ac)':'var(--bad)';
+let d='M'+X(0)+','+Y(J[0][1]);J.slice(1).forEach((j,k)=>{const x0=X(k),x1=X(k+1);d+=` C${x0+100},${Y(J[k][1])} ${x1-100},${Y(j[1])} ${x1},${Y(j[1])}`});
+jm.innerHTML=['Encantado','Satisfecho','Neutral','Molesto','Frustrado'].map((l,k)=>`<text x="0" y="${24+k*45}">${l}</text><line x1="90" x2="1390" y1="${20+k*45}" y2="${20+k*45}" stroke="var(--ln)" stroke-dasharray="3 6"/>`).join('')+`<path d="${d}" fill="none" stroke="var(--ac)" stroke-width="4" pathLength="1" stroke-dasharray="1" style="animation:dr 2s both"/><style>@keyframes dr{from{stroke-dashoffset:1}}</style>`+J.map((j,k)=>`<g style="cursor:pointer" onclick="sel(${k})"><circle cx="${X(k)}" cy="${Y(j[1])}" r="16" fill="${fc(j[1])}"/><text x="${X(k)}" y="${Y(j[1])+5}" text-anchor="middle" style="fill:#07131F;font-weight:700">${j[1]}</text><text x="${X(k)}" y="245" text-anchor="middle">${j[0].toUpperCase()}</text></g>`).join('');
+function sel(k){const j=J[k];jd.innerHTML=[['Acciones',j[2]],['Pensamientos',j[3]],['Emoción',j[1]+'/5'],['Touchpoints',j[4]],['Pain points',j[5]],['Oportunidades de mejora',j[6]]].map(([a,b])=>`<div class="card"><p class="lbl">${a} · ${j[0]}</p>${b}</div>`).join('')}
+sel(5);
+jt.innerHTML='<tr><th></th>'+J.map(j=>`<th>${j[0]}</th>`).join('')+'</tr>'+[['Acciones',2],['Pensamientos',3],['Emoción',1],['Touchpoints',4],['Pain points',5],['Oportunidades',6],['KPI',7]].map(([n,c])=>`<tr><th>${n}</th>${J.map(j=>`<td ${c===1?`style="color:${fc(j[1])};font-weight:700"`:''}>${c===1?j[1]+'/5':j[c]}</td>`).join('')}</tr>`).join('');
+</script>
+</body>
+</html>
